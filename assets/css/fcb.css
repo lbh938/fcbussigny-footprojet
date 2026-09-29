@@ -1,0 +1,225 @@
+
+/* ===== FC Bussigny : compléments au design system (jaune #FFED00 / noir) ===== */
+:root{--fcb-yellow:#FFED00;--fcb-black:#0a0a0a;--fcb-ink:#0e0e0e}
+html{scroll-behavior:smooth}
+body{background:#0e0e0e}
+::selection{background:var(--fcb-yellow);color:#000}
+img{max-width:100%}
+.homepageHero-gradient{background:linear-gradient(180deg,rgba(14,14,14,.45) 0%,rgba(14,14,14,0) 38%),radial-gradient(121.6% 90.18% at 86.15% 0%,rgba(14,14,14,0) 49.83%,rgba(14,14,14,1) 100%)}
+
+/* boutons jaunes : texte noir */
+.bg-background-brand-jaune,.bg-dark-background-brand-jaune,.fcb-btn{color:#0a0a0a!important}
+.fcb-btn{display:inline-flex;width:max-content;transition:background-color .2s,transform .2s,color .2s}
+.fcb-btn:hover{transform:translateY(-1px)}
+.fcb-btn-dark{background:#0a0a0a;color:#fff!important}
+.fcb-btn-dark:hover{background:var(--fcb-yellow);color:#0a0a0a!important}
+.fcb-link{text-decoration:underline;text-decoration-color:var(--fcb-yellow);text-decoration-thickness:2px;text-underline-offset:3px}
+.fcb-link:hover{background:var(--fcb-yellow)}
+
+/* ---------- header ---------- */
+.fcb-header{transition:transform .35s cubic-bezier(.3,0,0,1)}
+.fcb-header.is-hidden{transform:translateY(-100%)}
+.fcb-bar{height:100%;background:#fff;color:#0a0a0a;box-shadow:0 4px 6px -1px #0000001a,0 2px 4px -2px #0000001a;transition:background-color .3s,color .3s,box-shadow .3s}
+.fcb-header.is-top .fcb-bar{background:transparent;color:#fff;box-shadow:none}
+.fcb-burger{transition:background-color .2s,color .2s}
+.fcb-bar .fcb-burger{background:#0a0a0a;color:var(--fcb-yellow)}
+.fcb-header.is-top .fcb-burger{background:transparent;color:#fff}
+.fcb-burger:hover{background:var(--fcb-yellow)!important;color:#0a0a0a!important}
+.fcb-logo{display:flex;align-items:center;gap:.6rem;height:100%;flex-shrink:0}
+.fcb-logo img{height:44px;width:auto;transition:transform .3s}
+.fcb-logo:hover img{transform:scale(1.06) rotate(-3deg)}
+.fcb-wordmark{font-family:var(--font-virage-narrow);font-weight:800;font-style:italic;text-transform:uppercase;font-size:1.05rem;line-height:1;letter-spacing:.01em}
+.fcb-wordmark small{display:block;font-family:var(--font-virage-wide);font-style:normal;font-weight:600;font-size:.5rem;letter-spacing:.12em;opacity:.7;margin-top:3px}
+.fcb-nav a{position:relative}
+.fcb-nav a:after{content:"";position:absolute;left:0;right:0;bottom:calc(50% - 14px);height:2px;background:var(--fcb-yellow);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.3,0,0,1)}
+.fcb-nav a:hover:after,.fcb-nav a[aria-current=page]:after{transform:scaleX(1)}
+.fcb-right{justify-content:flex-end;gap:.25rem}
+.fcb-right .fcb-cta{background:var(--fcb-yellow);color:#0a0a0a;height:2.25rem;padding:0 1rem;display:flex;align-items:center;margin-left:.5rem;clip-path:polygon(0 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%)}
+.fcb-right .fcb-cta:hover{background:#fff;opacity:1}
+@media (max-width:63.99rem){.fcb-logo img{height:36px}}
+
+/* ---------- menu burger ---------- */
+.fcb-menu{position:fixed;inset:0;z-index:80;display:flex;visibility:hidden;pointer-events:none}
+.fcb-menu.is-open{visibility:visible;pointer-events:auto}
+.fcb-menu__backdrop{position:absolute;inset:0;background:#000c;opacity:0;transition:opacity .4s}
+.fcb-menu.is-open .fcb-menu__backdrop{opacity:1}
+.fcb-menu__panel{position:relative;width:min(100%,1180px);height:100%;background:#0e0e0e;color:#fff;transform:translateX(-100%);transition:transform .55s cubic-bezier(.3,0,0,1);display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain}
+.fcb-menu.is-open .fcb-menu__panel{transform:none}
+.fcb-menu__top{display:flex;align-items:center;justify-content:space-between;height:var(--spacing-header-mobile);padding-left:1rem;border-bottom:1px solid #ffffff1a;flex-shrink:0}
+@media (min-width:64rem){.fcb-menu__top{height:var(--spacing-header-desktop);padding-left:5.375rem}}
+.fcb-menu__close{width:3.5rem;height:3.5rem;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--fcb-yellow);color:#0a0a0a;cursor:pointer}
+@media (min-width:64rem){.fcb-menu__close{width:4.5rem;height:4.5rem}}
+.fcb-menu__body{display:grid;grid-template-columns:1fr;gap:2rem;padding:2rem 1rem 3rem}
+@media (min-width:64rem){.fcb-menu__body{grid-template-columns:1.1fr 1fr;gap:4rem;padding:3.5rem 5.375rem 4rem}}
+.fcb-menu__main li{overflow:hidden}
+.fcb-menu__main a{display:inline-flex;align-items:center;gap:.75rem;padding:.35rem 0;color:#fff;transition:color .2s,transform .3s cubic-bezier(.3,0,0,1)}
+.fcb-menu__main a:hover,.fcb-menu__main a[aria-current=page]{color:var(--fcb-yellow);transform:translateX(8px)}
+.fcb-menu__main a span.num{font-family:var(--font-virage-wide);font-size:.7rem;font-style:normal;color:#ffffff80;letter-spacing:.1em}
+.fcb-menu.is-open .fcb-menu__main li>a{animation:reveal-text-vertical .75s cubic-bezier(.3,0,0,1) both}
+.fcb-menu__cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem 1.5rem;align-content:start}
+.fcb-menu__cols h4{color:var(--fcb-yellow);margin-bottom:1rem}
+.fcb-menu__cols a{display:block;padding:.3rem 0;color:#ffffffcc;transition:color .2s}
+.fcb-menu__cols a:hover{color:#fff}
+.fcb-menu__foot{margin-top:auto;padding:1.5rem 1rem;border-top:1px solid #ffffff1a;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;color:#ffffffb3}
+@media (min-width:64rem){.fcb-menu__foot{padding:1.5rem 5.375rem}}
+html.menu-open,html.menu-open body{overflow:hidden}
+
+/* ---------- révélations au scroll ---------- */
+html.js .fcb-anim:not(.is-in){animation-play-state:paused!important}
+.fcb-anim.is-in{animation-play-state:running}
+@media (prefers-reduced-motion:reduce){
+  *,:before,:after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+
+/* ---------- carrousels ---------- */
+.carousel-content{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y;scroll-padding-left:0}
+.carousel-content::-webkit-scrollbar{display:none}
+.carousel-content>div>[aria-roledescription=slide]{scroll-snap-align:start}
+.fcb-bleed{margin-right:calc((100% - 100vw)/2);padding-right:calc((100vw - 100%)/2)}
+.fcb-bleed>div:after{content:"";flex:0 0 1px}
+.carousel-content.is-drag{scroll-snap-type:none;cursor:grabbing;user-select:none}
+.carousel-content.is-drag a{pointer-events:none}
+.fcb-car-btn{opacity:0;pointer-events:none}
+@media (hover:hover){
+ .group\/carousel:hover .fcb-car-btn:not([disabled]){opacity:1;pointer-events:auto}
+}
+.fcb-car-btn[disabled]{opacity:0!important;pointer-events:none!important}
+.fcb-progress{transition:transform .2s linear,width .2s}
+.fcb-dark .fcb-progress{background:var(--fcb-yellow)!important}
+.fcb-dark .fcb-progress-track{background:#ffffff26!important}
+
+/* cartes équipes (bandeau sous le hero) */
+.fcb-teamcard{background:var(--fcb-yellow);color:#0a0a0a;transition:transform .3s cubic-bezier(.3,0,0,1),background-color .3s}
+.fcb-teamcard:hover{transform:translateY(-6px);background:#fff}
+.fcb-teamcard .fcb-tag{background:#0a0a0a;color:var(--fcb-yellow)}
+.fcb-teamcard .fcb-wm{position:absolute;right:-18%;bottom:-30%;height:190px;width:auto;opacity:.12;pointer-events:none;transition:transform .5s cubic-bezier(.3,0,0,1)}
+.fcb-teamcard:hover .fcb-wm{transform:rotate(-8deg) scale(1.08)}
+
+/* images en mode "logo" (fond noir) */
+.fcb-contain{background:#0e0e0e;display:flex;align-items:center;justify-content:center}
+.fcb-contain img{object-fit:contain!important;width:auto!important;height:84%!important;max-width:84%;position:relative!important}
+.fcb-contain.fcb-light{background:#f3f3f3}
+.fcb-contain.fcb-yellow{background:var(--fcb-yellow)}
+.fcb-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* titres de pages (bannière) */
+.fcb-banner-shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,10,10,.8) 0%,rgba(10,10,10,.35) 60%,rgba(10,10,10,.25) 100%)}
+.fcb-banner-title{text-shadow:0 2px 24px #0006}
+.fcb-kicker{display:inline-block;background:var(--fcb-yellow);color:#0a0a0a;padding:.35rem .6rem .25rem;clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%)}
+
+/* texte riche */
+.fcb-list{margin:0 0 1.5rem;padding:0;list-style:none}
+.fcb-list li{position:relative;padding-left:1.6rem;margin:.55rem 0;font-family:var(--font-virage);font-size:var(--font-size-d-paragraph);line-height:1.6}
+.fcb-list li:before{content:"";position:absolute;left:0;top:.62em;width:.8rem;height:.35rem;background:var(--fcb-yellow);transform:skew(-20deg);box-shadow:0 0 0 1px #0a0a0a20}
+.fcb-steps{counter-reset:s;list-style:none;padding:0;margin:0 0 1.5rem}
+.fcb-steps li{counter-increment:s;position:relative;padding:0 0 1rem 3rem;font-family:var(--font-virage);font-size:var(--font-size-d-paragraph);line-height:1.6}
+.fcb-steps li:before{content:counter(s);position:absolute;left:0;top:0;width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;background:#0a0a0a;color:var(--fcb-yellow);font-family:var(--font-virage-condensed);font-style:italic;font-weight:700;font-size:1.1rem}
+@media (max-width:63.99rem){.fcb-list li,.fcb-steps li{font-size:var(--font-size-m-paragraph)}}
+.richtext h3{margin-top:2rem}
+
+/* bloc chiffres clés */
+.fcb-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#ffffff1a}
+@media (min-width:64rem){.fcb-stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.fcb-stat{background:#0e0e0e;padding:2rem 1.25rem;color:#fff}
+.fcb-stat b{display:block;font-family:var(--font-virage-condensed);font-style:italic;font-weight:700;font-size:clamp(2.75rem,6vw,4.5rem);line-height:1;color:var(--fcb-yellow)}
+.fcb-stat span{display:block;margin-top:.6rem;font-family:var(--font-virage-narrow);text-transform:uppercase;font-weight:600;font-size:.8rem;letter-spacing:.03em;color:#ffffffb3}
+
+/* comité */
+.fcb-member{background:#0e0e0e;color:#fff;position:relative;overflow:hidden;min-height:340px;display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;transition:transform .35s cubic-bezier(.3,0,0,1)}
+.fcb-member:hover{transform:translateY(-6px)}
+.fcb-member .fcb-member-wm{position:absolute;right:-14%;top:-8%;height:78%;opacity:.14;transition:opacity .4s,transform .6s cubic-bezier(.3,0,0,1)}
+.fcb-member:hover .fcb-member-wm{opacity:.3;transform:rotate(-6deg)}
+.fcb-member .fcb-initials{position:absolute;left:1.5rem;top:1.25rem;font-family:var(--font-virage-condensed);font-style:italic;font-weight:700;font-size:3.5rem;line-height:1;color:var(--fcb-yellow)}
+.fcb-member ul{margin-top:.75rem}
+.fcb-member li{font-family:var(--font-virage);font-size:.85rem;color:#ffffffb3;padding:.15rem 0}
+.fcb-member li:first-child{color:var(--fcb-yellow);font-family:var(--font-virage-narrow);text-transform:uppercase;font-weight:600;letter-spacing:.02em}
+
+/* cartes documents */
+.fcb-doc{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.25rem;background:#f3f3f3;transition:background-color .2s,color .2s}
+.fcb-doc:hover{background:var(--fcb-yellow)}
+.fcb-doc .fcb-doc-ico{flex:0 0 2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;background:#0a0a0a;color:var(--fcb-yellow);font-family:var(--font-virage-narrow);font-weight:800;font-style:italic;font-size:.75rem}
+.fcb-doc small{display:block;color:#585858;font-family:var(--font-virage);font-size:.75rem;margin-top:.2rem}
+
+/* partenaires / avantages */
+.fcb-partner{background:#fff;border:1px solid #e8e8e8;display:flex;align-items:center;justify-content:center;aspect-ratio:3/2;padding:1.5rem;transition:border-color .2s,transform .3s}
+.fcb-partner:hover{border-color:#0a0a0a;transform:translateY(-4px)}
+.fcb-partner img{max-height:70%;max-width:85%;object-fit:contain}
+.fcb-perk{background:#f3f3f3;display:flex;flex-direction:column}
+.fcb-perk .fcb-perk-logo{background:#fff;height:150px;display:flex;align-items:center;justify-content:center;padding:1.5rem}
+.fcb-perk .fcb-perk-logo img{max-height:100%;max-width:80%;object-fit:contain}
+.fcb-perk .fcb-perk-offer{background:var(--fcb-yellow);color:#0a0a0a;padding:.9rem 1.25rem}
+.fcb-perk .fcb-perk-body{padding:1.25rem;flex:1;display:flex;flex-direction:column;gap:.75rem}
+.fcb-perk address{font-style:normal}
+
+/* sponsors */
+.sponsors img{width:auto;height:auto;max-width:110px;max-height:48px;object-fit:contain;filter:grayscale(1);opacity:.8;transition:filter .3s,opacity .3s}
+.sponsors img.fcb-sp-big{max-width:140px;max-height:60px}
+@media (min-width:64rem){.sponsors img{max-width:150px;max-height:56px}.sponsors img.fcb-sp-big{max-width:210px;max-height:80px}}
+.sponsors a:hover img{filter:none;opacity:1}
+
+/* formulaires */
+.fcb-form{display:grid;grid-template-columns:1fr;gap:1rem}
+@media (min-width:45rem){.fcb-form{grid-template-columns:1fr 1fr}.fcb-form .full{grid-column:1/-1}}
+.fcb-field label{display:block;margin-bottom:.4rem}
+.fcb-field input,.fcb-field select,.fcb-field textarea{width:100%;background:#f3f3f3;border:0;border-bottom:2px solid #cecece;padding:.85rem 1rem;font-family:var(--font-virage);font-size:1rem;color:#0a0a0a;border-radius:0;outline:none;transition:border-color .2s,background-color .2s}
+.fcb-field textarea{min-height:140px;resize:vertical}
+.fcb-field input:focus,.fcb-field select:focus,.fcb-field textarea:focus{border-color:#0a0a0a;background:#fff}
+.fcb-form-note{font-family:var(--font-virage);font-size:.8rem;color:#585858}
+.fcb-tabs button{border-bottom:2px solid transparent}
+.fcb-tabs button[aria-selected=true]{border-color:#0a0a0a;color:#0a0a0a}
+.fcb-contact-card{background:#0e0e0e;color:#fff;padding:2rem;position:relative;overflow:hidden}
+.fcb-contact-card .fcb-wm2{position:absolute;right:-60px;bottom:-60px;height:260px;opacity:.12}
+
+/* filtres actualités */
+.fcb-chip[aria-pressed=true]{background:#0a0a0a!important;color:var(--fcb-yellow)!important}
+[data-news-grid]>[hidden]{display:none!important}
+
+/* réseaux sociaux */
+.fcb-socials{display:flex;gap:.6rem;margin-top:1rem;list-style:none;padding:0}
+.fcb-socials a{display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;background:#ffffff14;color:#fff;clip-path:polygon(0 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%);transition:background-color .2s,color .2s,transform .2s}
+.fcb-socials a:hover{background:var(--fcb-yellow);color:#0a0a0a!important;transform:translateY(-2px)}
+.fcb-socials-strip{margin-top:0;gap:1rem}
+.fcb-socials-strip a{width:3.25rem;height:3.25rem;background:#0a0a0a;color:var(--fcb-yellow)}
+.fcb-menu__foot .fcb-socials{margin-top:0}
+
+/* footer */
+.fcb-footer a{transition:color .2s}
+.fcb-footer a:hover{color:var(--fcb-yellow)}
+.fcb-footer details summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.fcb-footer details summary::-webkit-details-marker{display:none}
+.fcb-footer details[open] summary svg{transform:rotate(180deg)}
+.fcb-footer details summary svg{transition:transform .3s}
+.fcb-slogan{display:flex;align-items:flex-end;gap:clamp(.5rem,2vw,2.5rem);overflow:hidden;line-height:.8}
+.fcb-slogan img{height:clamp(56px,11vw,150px);width:auto;flex-shrink:0}
+.fcb-slogan span{display:block;font-family:var(--font-virage-condensed);font-style:italic;font-weight:700;text-transform:uppercase;font-size:clamp(3.4rem,13.2vw,11.5rem);line-height:.8;color:#fff;white-space:nowrap}
+.fcb-slogan span.y{color:var(--fcb-yellow)}
+.fcb-slogan .mask{overflow:hidden;padding-top:.08em}
+.fcb-legal{border-top:1px solid #ffffff1a}
+
+/* utilitaires absents du CSS d'origine */
+.bg-white{background:#fff}
+.h-\[220px\]{height:220px}
+@media (max-width:63.99rem){.w-\[200px\]{width:200px}.w-\[85vw\]{width:85vw}}
+.top-\[40\%\]{top:40%}
+.my-xl{margin-block:var(--spacing-xl)}
+.py-5xl{padding-block:var(--spacing-5xl)}
+.aspect-\[3\/4\]{aspect-ratio:3/4}
+@media (min-width:64rem){
+ .md\:h-\[360px\]{height:360px}
+ .md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .md\:h-4xl{height:var(--spacing-4xl)}
+}
+@media (min-width:80rem){.lg\:col-span-4{grid-column:span 4/span 4}}
+
+/* divers */
+.fcb-yellow-bg{background:var(--fcb-yellow);color:#0a0a0a}
+.fcb-hover-zoom img{transition:transform .5s cubic-bezier(.3,0,0,1)}
+.fcb-hover-zoom:hover img{transform:scale(1.05)}
+.fcb-skip{position:absolute;left:-999px;top:0;z-index:100;background:var(--fcb-yellow);color:#000;padding:.75rem 1rem}
+.fcb-skip:focus{left:1rem;top:1rem}
+.fcb-banner-players{max-height:100%;width:auto}
+@media (max-width:63.99rem){.fcb-banner-players{max-height:200px!important;margin:0 auto}}
+.fcb-disc{display:inline-block;width:.5rem;height:.5rem;background:var(--fcb-yellow);transform:skew(-20deg)}
+.fcb-junior-noimg{background:#0e0e0e;display:flex;align-items:center;justify-content:center}
+.fcb-junior-noimg img{height:70%!important;width:auto!important;position:relative!important;object-fit:contain!important}
+.fcb-junior-noimg.alt{background:var(--fcb-yellow)}
