@@ -8,8 +8,7 @@
     "build": "next build",
     "start": "npx serve out",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
-    "convert": "python3 ../build_bussigny_next.py"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "next": "16.3.7",

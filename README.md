@@ -1,6 +1,6 @@
 # FC Bussigny — site Next.js
 
-Conversion du site statique `fcbussigny-nouveau/` (HTML/CSS/JS généré par `build_bussigny.py`) en application
+Site du FC Bussigny, converti depuis l'ancien site statique en application
 **Next.js 16 (App Router, TypeScript, React 19)** exportée en site statique — **fichier par fichier, structure intacte** :
 chaque page HTML devient `src/app/<même chemin>/page.tsx` avec le même balisage (JSX).
 
@@ -25,4 +25,4 @@ public/                   assets/ (CSS, polices, images, icônes, fcb.js), docs/
 
 - Liens `<a>` classiques (rechargement complet) et `fcb.js` chargé après hydratation : même comportement que le site statique
   (menu, en-tête au défilement, carrousels, onglets, filtres, formulaires).
-- Pour régénérer après une modification du site statique : `npm run convert` (lance `../build_bussigny_next.py`).
+- Le projet Next.js est désormais la seule source du site : les modifications se font directement dans `src/`.
